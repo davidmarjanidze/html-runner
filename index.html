@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="replaceable-content">
+      <textarea placeholder="Enter HTML"></textarea>
+      <button id="switch-to-full-screen">
+        Switch to full screen and render
+      </button>
+    </section>
+
+    <script>
+      window.onload = () => {
+        const replaceableContent = window.document.querySelector(
+          "#replaceable-content"
+        );
+        const htmlTextarea = window.document.querySelector("textarea");
+        const switchToFullScreenButton = window.document.querySelector(
+          "#switch-to-full-screen"
+        );
+
+        switchToFullScreenButton.addEventListener("click", () => {
+          window.document.body.requestFullscreen();
+          replaceableContent.innerHTML = htmlTextarea.value;
+        });
+      };
+    </script>
+  </body>
+</html>
