@@ -17,6 +17,7 @@
 
     <script>
       window.onload = () => {
+        const TEXT_AREA_HTML_LOCAL_STORAGE_KEY = "textAreaHTML";
         const replaceableContent = window.document.querySelector(
           "#replaceable-content"
         );
@@ -24,6 +25,17 @@
         const switchToFullScreenButton = window.document.querySelector(
           "#switch-to-full-screen"
         );
+
+        htmlTextarea.value = window.localStorage.getItem(
+          TEXT_AREA_HTML_LOCAL_STORAGE_KEY
+        );
+
+        htmlTextarea.addEventListener("keydown", () => {
+          window.localStorage.setItem(
+            TEXT_AREA_HTML_LOCAL_STORAGE_KEY,
+            htmlTextarea.value
+          );
+        });
 
         switchToFullScreenButton.addEventListener("click", () => {
           window.document.body.requestFullscreen();
